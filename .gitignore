@@ -1,0 +1,9 @@
+# Env configuration
+.env
+
+# IDE's configuration
+.idea/
+.vscode/**
+
+# Byte-compiled / optimized / DLL files
+**/__pycache__/

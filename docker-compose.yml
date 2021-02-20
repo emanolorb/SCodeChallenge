@@ -1,0 +1,33 @@
+
+version: '3'
+    
+services:
+  db:
+    image: postgres:12
+    env_file:
+      - .env
+  pgadmin:
+    container_name: pgadmin_image
+    image: dpage/pgadmin4
+    env_file:
+      - .env
+    ports:
+      - "5050:80"
+    depends_on:
+      - db
+  backend:
+    environment:
+      - DEBUG=True
+      - DB_URL=postgres://postgres:postgres@db:5432/postgres
+    build:
+      context: .
+      dockerfile: backend.Dockerfile
+    command: uvicorn main:app --reload --host 0.0.0.0
+    env_file:
+      - .env
+    volumes:
+      - .:/code
+    ports:
+      - "2020:8000"
+    depends_on:
+      - db
