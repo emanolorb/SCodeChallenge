@@ -1,7 +1,9 @@
 import datetime
+
 from sqlalchemy.orm import Session
-from .utils import getItemsList
+
 from . import models, schemas
+from .utils import getItemsList
 
 
 def create_item(db: Session, request_item: schemas.RequestItem):
@@ -16,6 +18,7 @@ def create_item(db: Session, request_item: schemas.RequestItem):
     return {
         'result': new_item
     }
+
 
 def get_items(db: Session, skip: int = 0, limit: int = 100):
     return db.query(models.Item).offset(skip).limit(limit).all()

@@ -1,15 +1,15 @@
+from pydantic import PostgresDsn
 from sqlalchemy import create_engine
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
-from pydantic import PostgresDsn
 
 SQLALCHEMY_DATABASE_URL = PostgresDsn.build(
-                scheme="postgresql",
-                user='postgres',
-                password='postgres',
-                host='db',
-                path='/app',
-            )
+    scheme="postgresql",
+    user='postgres',
+    password='postgres',
+    host='db',
+    path='/app',
+)
 
 engine = create_engine(
     SQLALCHEMY_DATABASE_URL

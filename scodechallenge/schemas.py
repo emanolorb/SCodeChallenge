@@ -13,10 +13,12 @@ class ItemBase(BaseModel):
     class Config:
         orm_mode = True
 
+
 class RequestItem(BaseModel):
     items: Optional[
         List
     ] = []
+
 
 class ResponseItem(BaseModel):
     result: List[int] = []
