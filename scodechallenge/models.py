@@ -9,6 +9,6 @@ class Item(Base):
     __tablename__ = "items"
 
     id = Column(Integer, primary_key=True, index=True)
-    item_request = Column(ARRAY(Integer, ARRAY(Integer)))
+    item_request = Column(String)
     item_response = Column(ARRAY(Integer))
     created_date = Column(DateTime, default=datetime.datetime.utcnow)

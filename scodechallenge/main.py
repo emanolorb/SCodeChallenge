@@ -21,11 +21,11 @@ async def root():
     return {"message": "Server on!"}
 
 
-@app.post("/items/", response_model=schemas.ItemBase)
+@app.post("/items/", response_model=schemas.ResponseItem)
 def create_item(
-    item: schemas.RequestItem, db: Session = Depends(get_db)
+    request_item: schemas.RequestItem, db: Session = Depends(get_db)
 ):
-    return item_crud.create_item(db=db, item=item)
+    return item_crud.create_item(db=db, request_item=request_item)
 
 
 @app.get("/items/", response_model=List[schemas.ItemBase])
