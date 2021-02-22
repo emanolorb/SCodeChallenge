@@ -1,0 +1,27 @@
+[[source]]
+url = "https://pypi.python.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[dev-packages]
+isort = "*"
+flake8 = "*"
+autoflake = "*"
+autopep8 = "*"
+
+[requires]
+python_version = "3.8"
+
+[packages]
+sqlalchemy = "*"
+psycopg2 = "*"
+psycopg2-binary = "*"
+
+[packages.fastapi]
+extras = [ "all",]
+
+[packages.uvicorn]
+extras = [ "standard",]
+
+[packages.databases]
+extras = [ "postgresql",]

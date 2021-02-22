@@ -1,0 +1,34 @@
+
+version: '3'
+    
+services:
+  db:
+    image: postgres:12
+    env_file:
+      - .env
+  pgadmin:
+    container_name: pgadmin_image
+    image: dpage/pgadmin4
+    environment:
+      - PGADMIN_DEFAULT_EMAIL=admin@scodechallenge.com
+      - PGADMIN_DEFAULT_PASSWORD=Holi1234#
+    ports:
+      - "5050:80"
+    depends_on:
+      - db
+  backend:
+    environment:
+      - DEBUG=True
+      - DB_URL=postgres://postgres:postgres@db:5432/postgres
+    build:
+      context: .
+      dockerfile: backend.Dockerfile
+    command: uvicorn scodechallenge.main:app --reload --host 0.0.0.0
+    env_file:
+      - .env
+    volumes:
+      - .:/code
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
