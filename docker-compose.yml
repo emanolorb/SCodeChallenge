@@ -23,7 +23,7 @@ services:
     build:
       context: .
       dockerfile: backend.Dockerfile
-    command: uvicorn main:app --reload --host 0.0.0.0
+    command: uvicorn scodechallenge.main:app --reload --host 0.0.0.0
     env_file:
       - .env
     volumes:
